@@ -1,0 +1,827 @@
+/* style.css - Enhanced and Responsive */
+
+/* --- General Resets & Variables --- */
+:root {
+    --bg-dark: #1a1a1a;        /* Deeper dark background */
+    --bg-medium: #2a2a2a;      /* Content background, card-like elements */
+    --bg-light: #3a3a3a;       /* Hover states, active elements, table header */
+    --text-light: #e0e0e0;     /* Main text color */
+    --text-muted: #aaaaaa;     /* Secondary text, notes */
+    --accent-green: #4CAF50;   /* Primary accent, solved status, main highlights */
+    --accent-blue: #007bff;    /* Links, buttons */
+    --accent-orange: #ff9800;  /* Medium difficulty, Revision icon */
+    --accent-red: #dc3545;     /* Hard difficulty */
+    --border-color: #444444;   /* General border color */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Modern font stack */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Changed to column to allow global header */
+    min-height: 100vh;
+    font-size: 16px; /* Base font size */
+}
+
+/* --- NEW: Global Header Styling --- */
+.global-header {
+    background-color: var(--bg-medium);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) var(--spacing-xl);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky; /* Make it stick to the top */
+    top: 0;
+    z-index: 100; /* Ensure it's on top of other content */
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.site-logo {
+    font-size: 1.8em; /* Larger logo */
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
+.site-title {
+    font-size: 1.5em;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.header-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.header-nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95em;
+}
+.header-nav ul li a:hover {
+    background-color: var(--bg-light);
+    color: var(--accent-blue);
+}
+
+.user-info-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-info-header span {
+    font-size: 0.95em;
+    color: var(--text-light);
+}
+
+.logout-link, .login-link, .signup-link {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+.logout-link:hover, .login-link:hover, .signup-link:hover {
+    background-color: #0056b3;
+}
+.signup-link {
+    background-color: var(--accent-green);
+}
+.signup-link:hover {
+    background-color: #388e3c;
+}
+
+
+/* --- Container for overall layout (sidebar + main content) --- */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1500px;
+    margin: var(--spacing-xl) auto; /* Center the container */
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    flex-grow: 1; /* Allow container to grow and fill vertical space */
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+    flex: 0 0 280px;
+    background-color: var(--bg-medium);
+    padding: var(--spacing-lg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+
+.sidebar h2 {
+    color: var(--accent-green);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.8em;
+    text-align: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--accent-green);
+}
+
+.sidebar h3 {
+    color: var(--text-light);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3em;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.sidebar ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: block;
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1.05em;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+    background-color: var(--bg-light);
+    color: var(--accent-blue);
+}
+
+/* --- Main Content Styling --- */
+.main-content {
+    flex-grow: 1;
+    background-color: var(--bg-dark);
+    padding: var(--spacing-xl);
+    min-width: 0;
+}
+
+.main-content h1 {
+    color: var(--accent-green);
+    font-size: 2.2em;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+/* --- Note Section --- */
+.note-section {
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--accent-blue);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+.note-section strong {
+    color: var(--accent-blue);
+}
+
+/* --- Progress Section --- */
+.progress-container {
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.progress-label {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xs);
+    white-space: nowrap;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius-sm);
+    height: 10px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-green);
+    border-radius: var(--border-radius-sm);
+    transition: width 0.5s ease;
+}
+
+.progress-bar.easy { background-color: #69F0AE; }
+.progress-bar.medium { background-color: var(--accent-orange); }
+.progress-bar.hard { background-color: var(--accent-red); }
+.progress-bar.orange { background-color: #ff9800; } /* For Revision bar, if you re-add it */
+
+
+.progress-text {
+    font-size: 0.9em;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.pick-random-btn {
+    grid-column: 1 / -1;
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap;
+    justify-self: center;
+    width: fit-content;
+    margin-top: var(--spacing-md);
+}
+
+.pick-random-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+.pick-random-btn:active {
+    transform: translateY(0);
+}
+
+
+/* --- Filters & Options --- */
+.filters-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    align-items: center;
+}
+
+.filters-options button,
+.dropbtn {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.95em;
+    white-space: nowrap;
+}
+
+.filters-options button:hover,
+.dropbtn:hover {
+    background-color: var(--bg-medium);
+    border-color: var(--accent-blue);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-medium);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+    z-index: 10;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color);
+    top: calc(100% + 5px);
+    left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-light);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --- Problem Table & Collapsible Sections --- */
+.collapsible-section {
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* Styling for sidebar collapsible sections */
+.sidebar-section {
+    margin-bottom: var(--spacing-md); /* Smaller margin for sidebar sections */
+    box-shadow: none; /* No shadow for these */
+}
+
+
+.section-header {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    font-size: 1.6em;
+    padding: var(--spacing-md) var(--spacing-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.section-header:hover {
+    background-color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+.section-header:active {
+    transform: translateY(0);
+    background-color: var(--bg-medium);
+}
+
+.section-header span:first-of-type {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    margin-left: var(--spacing-sm);
+}
+
+.toggle-icon {
+    font-size: 0.8em;
+    margin-left: var(--spacing-md);
+    transition: transform 0.3s ease;
+    color: var(--accent-green);
+}
+
+.collapsible-section.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out, opacity 0.4s ease-out;
+    padding: 0 var(--spacing-lg);
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+.collapsible-section.expanded .collapsible-content {
+    max-height: 2000px; /* Large enough value to cover all content when expanded */
+    padding: var(--spacing-lg);
+    opacity: 1;
+}
+.collapsible-section.expanded .collapsible-content ul { /* Style for ULs inside collapsible content */
+    list-style: none;
+    padding: 0;
+    margin-top: var(--spacing-sm);
+}
+.collapsible-section.expanded .collapsible-content ul li {
+    margin-bottom: var(--spacing-xs);
+}
+.collapsible-section.expanded .collapsible-content ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 6px 10px;
+    display: block;
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease;
+    font-size: 0.95em;
+}
+.collapsible-section.expanded .collapsible-content ul li a:hover {
+    background-color: var(--bg-dark);
+}
+
+
+.problem-list table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-medium);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.problem-list th,
+.problem-list td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.problem-list td:nth-child(2) { /* Problem title */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.problem-list th {
+    background-color: var(--bg-light);
+    color: var(--accent-green);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.problem-list tr:last-child td {
+    border-bottom: none;
+}
+
+.problem-list tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.problem-list tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+/* --- Table Actions/Icons --- */
+.problem-list td a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.problem-list td a:hover {
+    color: var(--text-light);
+}
+
+.problem-list td input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: var(--spacing-xs);
+    accent-color: var(--accent-green);
+    border-radius: var(--border-radius-sm);
+}
+
+.revision-icon { /* Styling for the revision icon */
+    cursor: pointer;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    font-size: 1.1em;
+    padding: 2px;
+    border-radius: var(--border-radius-sm);
+}
+.revision-icon:hover {
+    color: var(--text-light) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Difficulty Badges --- */
+.difficulty-easy,
+.difficulty-medium,
+.difficulty-hard {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    min-width: 60px;
+}
+
+.difficulty-easy { background-color: #28a745; }
+.difficulty-medium { background-color: #fd7e14; }
+.difficulty-hard { background-color: #dc3545; }
+
+
+/* --- No Problems Message --- */
+.no-problems-message {
+    background-color: var(--bg-medium);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    font-size: 1.2em;
+    color: var(--text-muted);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.no-problems-message strong {
+    color: var(--accent-red);
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-md);
+}
+.no-problems-message p {
+    margin-bottom: var(--spacing-sm);
+}
+.no-problems-message a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+.no-problems-message a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Responsive Design --- */
+
+@media (max-width: 1200px) {
+    .global-header {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    .header-nav ul {
+        gap: var(--spacing-md);
+    }
+    .header-nav ul li a {
+        font-size: 0.9em;
+    }
+    .container {
+        max-width: 95%;
+        margin: var(--spacing-lg) auto;
+    }
+    .sidebar {
+        flex: 0 0 220px;
+        padding: var(--spacing-md);
+    }
+    .main-content {
+        padding: var(--spacing-md);
+    }
+    .main-content h1 {
+        font-size: 2em;
+    }
+    .problem-list th,
+    .problem-list td {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        margin: 0;
+        display: block; /* Allow body content to flow naturally */
+    }
+    .global-header {
+        position: relative; /* Unstick on small screens */
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    .header-content {
+        flex-direction: column; /* Stack header content vertically */
+        gap: var(--spacing-sm);
+    }
+    .header-nav ul {
+        flex-wrap: wrap; /* Allow nav links to wrap */
+        justify-content: center;
+        gap: var(--spacing-sm);
+    }
+    .header-nav ul li a {
+        font-size: 0.85em;
+        padding: 4px 8px;
+    }
+    .user-info-header {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    .user-info-header span, .logout-link, .login-link, .signup-link {
+        font-size: 0.85em;
+        padding: 4px 8px;
+    }
+
+
+    .container {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+    .sidebar {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-md) var(--spacing-lg);
+        max-height: none; /* Allow sidebar to be full height for content */
+        overflow-y: visible; /* Allow content to overflow normally */
+    }
+    .sidebar h2 {
+        font-size: 1.6em;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+    }
+    .sidebar h3 {
+        margin-top: var(--spacing-lg);
+        font-size: 1.1em;
+    }
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        overflow-x: auto; /* Enable horizontal scroll for sidebar links */
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: -var(--spacing-sm);
+    }
+    .sidebar ul::-webkit-scrollbar {
+        height: 6px;
+    }
+    .sidebar ul::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+        border-radius: 3px;
+    }
+    .sidebar ul::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 3px;
+    }
+    .sidebar ul::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+    }
+
+    .sidebar ul li {
+        margin-bottom: 0;
+    }
+    .sidebar ul li a {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+    .sidebar-section { /* Ensure sidebar collapsible sections collapse visually */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out; /* Simpler transition for performance */
+    }
+    .sidebar-section.expanded {
+        max-height: 500px; /* Max height to cover content on mobile */
+        overflow: visible;
+    }
+    .sidebar-section .section-header {
+        font-size: 1.3em;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-bottom: none; /* Remove border for cleaner look */
+    }
+    .sidebar-section.expanded .section-header {
+        border-bottom: 1px solid var(--border-color); /* Add border when expanded */
+    }
+
+
+    .main-content {
+        padding: var(--spacing-md);
+        min-width: unset;
+    }
+    .main-content h1 {
+        font-size: 1.8em;
+        padding-bottom: var(--spacing-md);
+    }
+
+    .progress-container {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-md);
+    }
+    .pick-random-btn {
+        width: 100%;
+    }
+    .filters-options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filters-options button, .dropbtn {
+        width: 100%;
+        text-align: left;
+    }
+    .dropdown-content {
+        min-width: 100%;
+    }
+
+    .problem-list {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--spacing-sm);
+    }
+    .problem-list table {
+        display: block;
+        width: auto;
+        min-width: 700px;
+    }
+    .problem-list th,
+    .problem-list td {
+        white-space: nowrap;
+    }
+    .problem-list td:nth-child(2) {
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 200px;
+    }
+    .section-header {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    .main-content h1 {
+        font-size: 1.5em;
+    }
+    .sidebar h2 {
+        font-size: 1.4em;
+    }
+    .sidebar ul li a {
+        font-size: 0.85em;
+    }
+    .progress-text {
+        font-size: 0.8em;
+    }
+    .section-header {
+        font-size: 1.3em;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
